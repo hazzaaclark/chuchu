@@ -17,11 +17,7 @@ extern "C"
 {}
 #endif
 
-
-typedef struct IO
-{
-	typedef char* SYS_BUFFER;
-};
+#define IO_BUFFER U8
 
 VOID_FUNCTION(SYS_READ);
 VOID_FUNCTION(SYS_WRITE);
