@@ -14,10 +14,18 @@
 
 #define CPU_TLB U64
 
+#define CPU_TLB_ENTRY (VALUE) \
+static CPU_TLB_ENTRY(CPU_TLB, 4);
+
 #define CPU_TLS (VALUE, DIVIDER) \
 static CPU_TARGET_LONG_SIZE(CPU_TLB / 8);
 
+#define CPU_VTLS 8
+
 #define CPU_SUPERVISOR_MODE (BIT)
 #define CPU_USER_MODE (BIT)
+
+#define ADDRESS U64
+#define ADDRESS_BITS 64
 
 #endif
