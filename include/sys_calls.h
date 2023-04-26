@@ -12,12 +12,12 @@
 
 #include "common.h"
 
-#ifdef __cplusplus
-extern "C"
-{}
-#endif
+#define OS_BYTE 0
+#define OS_LONG 1
+#define OS_WORD 2
+#define OS_UNKNOWN 3
 
-#define IO_BUFFER U8
+#define MAX_CONDITION_REGS 32
 
 VOID_FUNCTION(SYS_READ);
 VOID_FUNCTION(SYS_WRITE);
