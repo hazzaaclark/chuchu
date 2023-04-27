@@ -28,7 +28,9 @@ static CPU_TARGET_LONG_SIZE(CPU_TLB / 8);
 #define CPU_SUPERVISOR_MODE (BIT)
 #define CPU_USER_MODE (BIT)
 
-#define ADDRESS U64
+#define ADDRESS (VALUE) \
+static ADDRESS(U32* ADDRESS_INDEX(ADDRESS >> 24));
+
 #define ADDRESS_BITS 64
 
 typedef struct CONDITIONS
