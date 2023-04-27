@@ -26,7 +26,11 @@
 /* TO THE MICRO-PROCESSOR ON A LOW LEVEL SUCH AS */
 /* INTERRUPTS, ERRORS, AND MEMORY MANAGEMENT VECTORS */
 
-/* DOCUMENTATION USED: https://wiki.megadrive.org/index.php?title=68k_vector_table */
+/* DOCUMENTATION USED: */
+
+/* https://wiki.megadrive.org/index.php?title=68k_vector_table */
+
+/* http://md.railgun.works/index.php?title=68k_Instruction_Reference */
 
 #ifndef SYS_VECTOR_TABLE
 #define SYS_VECTOR_TABLE
@@ -34,6 +38,10 @@
 #define STACK_ADDRESS 0
 #define PROGRAM_INIT 1
 #define BUS_ERROR 2
+#define ILLEGAL 3
+#define ADDRESS_ERROR 4
+#define DIV_ZERO 5
+#define CHECK_INSTRUCTION 6
 
 #endif
 
