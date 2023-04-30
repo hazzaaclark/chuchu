@@ -30,8 +30,6 @@ static void CPU_INIT(CPU* CPU)
 	{
 		return;
 	}
-
-	return;
 }
 
 static void CPU_FREE(CPU* CPU)
