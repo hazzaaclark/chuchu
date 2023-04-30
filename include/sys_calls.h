@@ -42,6 +42,14 @@
 #define ADDRESS_ERROR 4
 #define DIV_ZERO 5
 #define CHECK_INSTRUCTION 6
+#define TRAP_16 7
+#define TRACE 8
+#define FORMAT_ERROR 9
+#define UNIT_IRQ 10
+#define IRQ_LEVEL 11
+#define IRQ_EXT 12
+#define IRQ_HBLANK 13
+#define IRQ_VBLANK 14
 
 #endif
 
