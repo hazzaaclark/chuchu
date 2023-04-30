@@ -45,7 +45,7 @@ typedef struct CPU
 
 	typedef U32* STACK_POINTER[3]; // 3 INSTANCES OF THE STACK POINTER
 	                               // TO ACT AS A TRUTH TABLE OF SORTS
-								   // SEE TABLE 6-1: https://www.nxp.com/docs/en/reference-manual/MC68000UM.pdf //
+	                               // SEE TABLE 6-1: https://www.nxp.com/docs/en/reference-manual/MC68000UM.pdf //
 
 	typedef U32* USER_STACK_POINTER[3];
 
@@ -65,8 +65,11 @@ typedef struct CPU
 
 #define OPERAND U32 
 
-#define FLAG_EXTEND (SIZE) \
+#define FLAG_EXTEND (SIZE, VALUE) \
 static EXTEND(SIZE >> 4 & 0x01);
+
+#define FLAG_ZERO (SIZE, VALUE) \
+static ZERO(SIZE >> 2 & 0x02);
 
 #endif
 
