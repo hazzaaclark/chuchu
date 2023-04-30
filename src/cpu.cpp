@@ -17,3 +17,8 @@ static inline void SET_PROGRAM_COUNTER(CPU* CPU)
 {
 	CPU += sizeof(CPU_OBJECT(CPU));
 }
+
+static U64 GET_PROGRAM_COUNTER(CPU* CPU)
+{
+	return sizeof(CPU_OBJECT(CPU));
+}
