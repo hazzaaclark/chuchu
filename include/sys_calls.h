@@ -50,6 +50,15 @@
 #define IRQ_EXT 12
 #define IRQ_HBLANK 13
 #define IRQ_VBLANK 14
+#define BRANCH_SET_CONDITION 15
+#define INEXACT 16
+#define ZERO 17
+#define UNDERFLOW 18
+#define OVERFLOW 19
+#define OPERAND_ERROR 20
+#define MMU_ERROR 21
+#define MMU_ILLEGAL 22
+#define MMU_ACCESS_VIOLATION 23
 
 #endif
 
