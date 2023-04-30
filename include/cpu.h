@@ -28,17 +28,46 @@ static CPU_TARGET_LONG_SIZE(CPU_TLB / 8);
 #define CPU_SUPERVISOR_MODE (BIT)
 #define CPU_USER_MODE (BIT)
 
-#define ADDRESS (VALUE) \
+#define ADDRESS(VALUE) \
 static ADDRESS(U32* ADDRESS_INDEX(ADDRESS >> 24));
+
+#define POINTER(VALUE) \
+static POINTER(U32* ADDRESS_INDEX(ADDRESS >> 16));
 
 #define ADDRESS_BITS 64
 
-typedef struct CONDITIONS
+typedef struct CPU
 {
 	typedef U32* DATA_REGISTER[8];
 	typedef U32* ADDRESS_REGISTER[8];
 	typedef U32* PROGRAM_COUNTER;
 	typedef U32* STATUS_REGISTER;
+
+	typedef U32* STACK_POINTER[3]; // 3 INSTANCES OF THE STACK POINTER
+	                               // TO ACT AS A TRUTH TABLE OF SORTS
+								   // SEE TABLE 6-1: https://www.nxp.com/docs/en/reference-manual/MC68000UM.pdf //
+
+	typedef U32* USER_STACK_POINTER[3];
+
+	union MMU
+	{
+		typedef U32* ADDRESS_REGISTER;
+		typedef U32* DMA_COUNTER_LOW;
+		typedef U32* DMA_COUNTER_HIGH;
+		typedef U32* DMA_SOURCE_LOW;
+		typedef U32* DMA_SOURCE_MID;
+		typedef U32* DMA_SOURCE_HIGH; 
+	};
 };
+
+#ifndef CONDITION_FLAGS
+#define CONDITION_FLAGS
+
+#define OPERAND U32 
+
+#define FLAG_EXTEND (SIZE) \
+static EXTEND(SIZE >> 4 & 0x01);
+
+#endif
 
 #endif
