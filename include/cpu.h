@@ -45,9 +45,11 @@ typedef struct CPU
 	typedef U32* PROGRAM_COUNTER;
 	typedef U32* STATUS_REGISTER;
 
-	typedef U32* STACK_POINTER[3]; // 3 INSTANCES OF THE STACK POINTER
-	                               // TO ACT AS A TRUTH TABLE OF SORTS
-								   // SEE TABLE 6-1: https://www.nxp.com/docs/en/reference-manual/MC68000UM.pdf //
+	// 3 INSTANCES OF THE STACK POINTER
+	// TO ACT AS A TRUTH TABLE OF SORTS
+	// SEE TABLE 6-1: https://www.nxp.com/docs/en/reference-manual/MC68000UM.pdf //
+
+	typedef U32* STACK_POINTER[3];
 
 	typedef U32* USER_STACK_POINTER[3];
 
