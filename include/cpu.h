@@ -15,6 +15,8 @@
 #include "common.h"
 #include "sys_calls.h"
 
+#define CPU_OBJECT
+
 #define CPU_TLB U64
 
 #define CPU_TLB_ENTRY (VALUE) \
@@ -45,7 +47,7 @@ typedef struct CPU
 
 	typedef U32* STACK_POINTER[3]; // 3 INSTANCES OF THE STACK POINTER
 	                               // TO ACT AS A TRUTH TABLE OF SORTS
-	                               // SEE TABLE 6-1: https://www.nxp.com/docs/en/reference-manual/MC68000UM.pdf //
+								   // SEE TABLE 6-1: https://www.nxp.com/docs/en/reference-manual/MC68000UM.pdf //
 
 	typedef U32* USER_STACK_POINTER[3];
 
@@ -72,5 +74,16 @@ static EXTEND(SIZE >> 4 & 0x01);
 static ZERO(SIZE >> 2 & 0x02);
 
 #endif
+
+VOID_FUNCTION(SET_PROGRAM_COUNTER);
+VOID_FUNCTION(SET_ENV);
+VOID_FUNCTION(CPU_INIT);
+VOID_FUNCTION(CPU_FREE);
+VOID_FUNCTION(CPU_SET_FEATURES);
+VOID_FUNCTION(CPU_REGISTER_RESET);
+VOID_FUNCTION(CPU_READ_REGISTERS);
+VOID_FUNCTION(CPU_SET_CURRENT_CONDITION);
+VOID_FUNCTION(CPU_SET_STATUS_REGISTER);
+VOID_FUNCTION(CPU_SET_FPCR);
 
 #endif
