@@ -12,6 +12,7 @@
 /* SYSTEM INCLUDES */
 
 #include <stdio.h>
+#include <cstdlib>
 
 static inline void SET_PROGRAM_COUNTER(CPU* CPU)
 {
@@ -21,4 +22,19 @@ static inline void SET_PROGRAM_COUNTER(CPU* CPU)
 static U64 GET_PROGRAM_COUNTER(CPU* CPU)
 {
 	return sizeof(CPU_OBJECT(CPU));
+}
+
+static void CPU_INIT(CPU* CPU)
+{
+	if (CPU == NULL)
+	{
+		return;
+	}
+
+	return;
+}
+
+static void CPU_FREE(CPU* CPU)
+{
+	free(CPU);
 }
