@@ -46,4 +46,12 @@ typedef volatile double VF64;
 #define VOID_FUNCTION(NAME) void NAME(void)
 #define UNKNOWN(...)(__VA_ARGS__)(NAME) void(NAME)
 
+#ifndef ENDIANESS
+#define ENDIANESS
+
+#define LITTLE_ENDIAN (VALUE) ((VALUE >> 8) | VALUE << 8)
+#define BIG_ENDIAN (VALUE ((VALUE >> 24) | VALUE << 8) && U32 POINTER) | ((VALUE >> 8) && U32 POINTER) | ((VALUE << 24))
+
+#endif
+
 #endif
