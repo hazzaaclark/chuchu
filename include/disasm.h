@@ -58,4 +58,24 @@
 
 #endif
 
+/* FUNCTIONALITY FOR THE SYMBOL LOOKUP TABLE */
+
+#ifdef SYMBOL_TABLE
+#define SYMBOL_TABLE
+#else
+#define SYMBOL_TABLE
+
+#define			TABLE_SIZE			4096
+#define			PAGING_ORG			0x0F
+
+typedef struct SYM_TABLE
+{
+	char* SYMBOL;
+	U32* ADDRESS;
+	SYM_TABLE* LEFT;
+	SYM_TABLE* RIGHT;
+};
+
+#endif
+
 #endif
