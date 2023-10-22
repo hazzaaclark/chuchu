@@ -7,6 +7,7 @@
 /* NESTED INCLUDES */
 
 #include "common.h"
+#include "disasm.h"
 
 /* SYSTEM INCLUDES */
 
@@ -15,16 +16,17 @@
 
 #ifdef USE_IDA_LIB
 
-#define HARRY "Harry"
+/* INTIALISES THE DEBUGGER COROUTINE BASED ON THE PROPRIATORY HOOKS */
+/* NECESSARY TO DETERMINE CONFIGURATIONS */
 
-int main(int argc, char* argv[])
+static plugmod_t* idaapi INIT(void)
 {
-	if (argc != 2)
-	{
-		printf(HARRY);
-	}
+	#ifdef USE_SH4
 
-	return 0;
+
+
+	#endif
+
 }
 
 #endif
