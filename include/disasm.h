@@ -47,7 +47,8 @@
 
 typedef struct ARCH
 {
-
+	U32 ADDRESS_MODE;
+	char* CONDITION;
 };
 
 /* FLOATING POINTS DIRECTIVES FOR GPR BANKING */
@@ -67,10 +68,10 @@ typedef struct ARCH
 						 static ARCH* TYPE ## OPCODE(U16);
 
 #define			GPR_DISP			      (OPCODE & 0x0F) \
-						 static ARCH* TYPE ## OPCODE(U8);
+						  static ARCH* TYPE ## OPCODE(U8);
 
 #define			GPR_ROUND			((OPCODE  &0x00F0) >> 4) \
-                              			 static ARCH* TYPE ## OPCODE(U32);
+                            static ARCH* TYPE ## OPCODE(U32);
 
 #define			BASE_INSTR			16
 #define			START_ADDRESS		0x0010000
