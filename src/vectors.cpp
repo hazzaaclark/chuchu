@@ -10,13 +10,23 @@
 #include "disasm.h"
 
 static VECTOR_TABLE* VECTOR;
+static HEADER* BINARY_HEADER;
 
-/* INITIALISES THE PROVIDE BINARY BY USING */
+/* INITIALISES THE PROVIDED BINARY BY USING THE PRE-DEFINED */
+/* DIRECTIVES FROM THE IDA API TO LOAD AND PARSE CONTENTS */
 
-static U32 idaapi INIT_BINARY(qstring* FILE_NAME,
+static U32 idaapi INIT_BINARY(qstring* FILE_FORMAT,
+							  const char* FILENAME,
 							  qstring* PROCESSOR,
 							  linput_t* LOADER)
 {
-	qlread(LOADER, &VECTOR, sizeof(VECTOR));
-	return 0;
+	// PARSE THE INPUT SOURCE RELATIVE TO THE SIZE OF THE CORRESPONDENCES
+
+	if (qlread(LOADER, &VECTOR, sizeof(VECTOR)) != sizeof(VECTOR)) return 0;
+	if (qlread(LOADER, &BINARY_HEADER, sizeof(BINARY_HEADER)) != sizeof(BINARY_HEADER)) return 0;
+
+	// USES IDA'S VERSION OF "sprintf" TO CONCATENATE A STRING
+
+	FILE_FORMAT->sprnt("%s", "SEGA DREAMCAST BINARY");
+	return 1;
 }
