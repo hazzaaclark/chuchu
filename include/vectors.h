@@ -42,7 +42,18 @@ typedef struct VECTOR_TABLE
 		U32 INITIAL_PAGE_WRITE_EXCP;
 		U32 UNCONDITIONAL_TRAP;
 		U32 USER_BREAK_INSTR_EXCP;
+		U32 EXCEPTIONS[64];
 	};
+};
+
+typedef struct HEADER
+{
+	ushort CHECKSUM;
+	uchar SRAM[16];
+	U32 ROM_START;
+	U32 ROM_END;
+	U32 RAM_START;
+	U32 RAM_END;
 };
 
 /* CONCATENATE VECTOR BASED TYPES IF NECESSARY */
@@ -52,5 +63,14 @@ static VECTOR_TABLE* TYPE ## VALUE(U8 EXCEPTION_CODE);
 
 #define			VECTOR_OFFSET(VALUE)			   \
 static VECTOR_TABLE* TYPEE ## VALUE(U8 OFFSET_CODE);
+
+#ifdef IDA_PRAGMAS
+#define IDA_PRAGMAS
+#else
+#define IDA_PRAGMAS
+
+idaman loader_t* ida_module_data LOAD_IDA_MODULE;
+
+#endif
 
 #endif
