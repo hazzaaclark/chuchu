@@ -16,9 +16,9 @@ static HEADER* BINARY_HEADER;
 /* DIRECTIVES FROM THE IDA API TO LOAD AND PARSE CONTENTS */
 
 static U32 idaapi INIT_BINARY(qstring* FILE_FORMAT,
-							  const char* FILENAME,
-							  qstring* PROCESSOR,
-							  linput_t* LOADER)
+			      const char* FILENAME,
+			      qstring* PROCESSOR,
+			      linput_t* LOADER)
 {
 	// PARSE THE INPUT SOURCE RELATIVE TO THE SIZE OF THE CORRESPONDENCES
 
