@@ -46,4 +46,8 @@ static void idaapi LOAD_BINARY(linput_t* LOADER, const char* FILENAME)
 		set_processor_type("SH4", SETPROC_LOADER);
 		set_target_assembler(0);
 	}
+
+	// DMA FOR ROM SIZE RELATIVE TO THE FILE
+
+	malloc, 1, sizeof(BINARY_HEADER->ROM_SIZE += qlsize(LOADER));
 }
