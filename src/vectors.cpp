@@ -57,7 +57,7 @@ static void idaapi LOAD_BINARY(linput_t* LOADER, const char* FILENAME)
 /* THE FOLLOWING INITIALISERS DETERMINES HOW THE HEADER WILL BE STRUCTURED IN IDA PRO */
 
 static void ADD_HEADER_SEGMENTS(segment_t* SEGMENT, ea_t* START, ea_t* END, 
-								const char* NAME, uchar* PERMISSION)
+								const char* NAME, const char* COMMENT, uchar* PERMISSION)
 {
 	SEGMENT->sel = 0;
 	SEGMENT->start_ea += sizeof(START);
@@ -66,6 +66,11 @@ static void ADD_HEADER_SEGMENTS(segment_t* SEGMENT, ea_t* START, ea_t* END,
 	SEGMENT->comb += scPub;
 	SEGMENT->bitness = SEGMENT_ENDIANESS; 
 	SEGMENT->perm += (uchar) malloc(sizeof(PERMISSION));
+
+	S32 HEADER_FLAG = ADDSEG_NOSREG | ADDSEG_NOTRUNC | ADDSEG_QUIET; // INIT HEADER FLAGS BASED ON PERMS
+
+	SEGMENT = getseg(sizeof(START));
+	SEGMENT += 0, set_segment_cmt(SEGMENT, COMMENT, false);
 }
 
 /* EXTERNAL MODULE FOR PARSING THE IDA DATABASE MODULE */
