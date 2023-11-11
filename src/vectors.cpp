@@ -8,6 +8,7 @@
 /* NESTED INCLUDES */
 
 #include "disasm.h"
+#include "loader.h"
 
 static VECTOR_TABLE* VECTOR;
 static HEADER* BINARY_HEADER;
@@ -50,6 +51,21 @@ static void idaapi LOAD_BINARY(linput_t* LOADER, const char* FILENAME)
 	// DMA FOR ROM SIZE RELATIVE TO THE FILE
 
 	malloc, 1, sizeof(BINARY_HEADER->ROM_SIZE += qlsize(LOADER));
+}
+
+/* ADD THE CORRESPONDING HEADER SEGMENTS IN RELATION TO THE PRE-REQUISITE LENGTH */
+/* THE FOLLOWING INITIALISERS DETERMINES HOW THE HEADER WILL BE STRUCTURED IN IDA PRO */
+
+static void ADD_HEADER_SEGMENTS(segment_t* SEGMENT, ea_t* START, ea_t* END, 
+								const char* NAME, uchar* PERMISSION)
+{
+	SEGMENT->sel = 0;
+	SEGMENT->start_ea += sizeof(START);
+	SEGMENT->end_ea += sizeof(END);
+	SEGMENT->align += saRelByte;
+	SEGMENT->comb += scPub;
+	SEGMENT->bitness = SEGMENT_ENDIANESS; 
+	SEGMENT->perm += (uchar) malloc(sizeof(PERMISSION));
 }
 
 /* EXTERNAL MODULE FOR PARSING THE IDA DATABASE MODULE */
